@@ -56,6 +56,8 @@
               <div class="row">
                 <div class="col-md col-sm-12"><a class="text-light"
                     href="">Guo Zixun</a> </div>
+                    <div class="col-md col-sm-12"><a class="text-light"
+                      href="">Chen Chen</a> </div>
                 <div class="col-md col-sm-12"><a class="text-light"
                     href="https://scholar.google.com/citations?user=FJodrCcAAAAJ&hl=en">Chng Eng Siong</a> </div>
               </div>
@@ -83,20 +85,7 @@
         <div class="col">
           <h2>Explicit distortion modelling using DDSP to simulate air traffic control(ATC) noisy speech</h2>
           <div>
-            <p> Explicit distortion modeling is able to enhance automatic
-              speech recognition(ASR) systems under noisy conditions. In
-              this paper, we propose a fully explainable model DENT to
-              simulate VHF/UHF transmitted data(e.g. air traffic control
-              speech). DENT stands for data-efficient noisy speech generator and utilizes novel differentiable digital processing(DDSP)
-              components as backends. The novel and trainable DDSP components proposed are waveshaper and computationally-efficient
-              dynamic range compressor(DRC) which can be easily intergrated to other DDSP models. DENT only requires 10-seconds
-              of training data which is 60 time less compare to SimuGAN[1],
-              the current state-of-the-art model that utilizes GAN to simulate
-              VHF/UHF transmitted data. Yet, DENT outperforms Simu-
-              GAN in terms of simulation quality and generalization ability
-              on unseen data. Simulated data from DENT are utilized to train
-              noisy-robust ASR systems and outperform other strong baseline
-              model in terms of word error rate(WER). 
+            <p> The performances of automatic speech recognition (ASR) systems degrade drastically under noisy conditions. Explicit distortion modelling (EDM), as a feature compensation step, is able to enhance ASR systems under such conditions by simu- lating in-domain noisy speeches from the clean counterparts. However, existing distortion models are either non-trainable or unexplainable and often lack controllability and general- ization ability. In this paper, we propose a fully explainable and controllable model: DENT-DDSP to achieve EDM. DENT- DDSP utilizes trainable differentiable digital signal processing (DDSP) components and requires only 10 seconds of training data to achieve high fidelity. The experiment shows that the simulated noisy data from DENT-DDSP achieves the best sim- ulation quality compared to other static or GAN-based distor- tion models in terms of multi-scale spectral loss (i.e., MSSL). Furthermore, a downstream ASR task is designed to evaluate whether the simulated noisy data can be utilized for ASR and achieve similar performances using the real noisy data. The experiment shows that the ASR model trained with simulated data from DENT-DDSP achieves the lowest word to error rate (i.e., WER) among all distortion models and has achieved com- parable performances to the upper-bound performance model trained with in-domain real noisy data in terms of WER. 
           </div>
         </div>
       </div>
@@ -105,7 +94,7 @@
       <div class="row" id="result">
         <div class="col-md-12">
           <h2>Speech Samples</h2>
-          <p> Comparison between clean speech, ground truth noisy speech, DENT simulated noisy speech and SimuGAN simulated noisy speech is listed below.
+          <p> Comparison between clean speech, real noisy speech, simulated noisy speech from different distortion models: DENT-DDSP, SimuGAN, g726, codec2. Note that for g726, codec2 output, the background noise are collected from real noisy speech data. Whereas, the background noise of DENT-DDSP and SimuGAN are simulated.
             <!-- <p style="color:red;">Please put on your earphones when linstening to these samples.</p> -->
                   <div class="big-screen">
                     <table class="table">
@@ -114,8 +103,10 @@
                           <th> ID </th>
                           <th>Clean speech</th>
                           <th>Real noisy speech</th>
-                          <th>DENT-Simulated noisy speech</th>
-                          <th>SimuGAN-Simulated noisy speech</th>
+                          <th>DENT-DDSP simulated</th>
+                          <th>SimuGAN simulated</th>
+                          <th>g726 simulated</th>
+                          <th>codec2 simulated</th>
 
                         </tr>
                       </thead>
@@ -146,6 +137,19 @@
                               Your browser does not support the audio element.
                             </audio>
                           </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_g726/fe_03_11653-02149-B-017933-018132-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_codec2/fe_03_11653-02149-B-017933-018132-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+
                         </tr>
 
                         <tr>
@@ -174,6 +178,22 @@
                               Your browser does not support the audio element.
                             </audio>
                           </td>
+
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_g726/fe_03_14259-04662-A-006050-006292-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_codec2/fe_03_14259-04662-A-006050-006292-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+
+
                         </tr>
                         <tr>
                           <th scope="row">1</th>
@@ -198,6 +218,18 @@
                           <td>
                             <audio controls controlsList="nodownload">
                               <source src="speech_audio/SimuGAN/fe_03_48952-02150-A-040800-041832-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_g726/fe_03_48952-02150-A-040800-041832-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_codec2/fe_03_48952-02150-A-040800-041832-src.wav" type="audio/wav" />
                               Your browser does not support the audio element.
                             </audio>
                           </td>
@@ -228,6 +260,18 @@
                               Your browser does not support the audio element.
                             </audio>
                           </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_g726/fe_03_54236-01918-B-006183-006473-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                            <audio controls controlsList="nodownload">
+                              <source src="speech_audio/clean_codec2/fe_03_54236-01918-B-006183-006473-src.wav" type="audio/wav" />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
                         </tr>
 
 
@@ -239,7 +283,7 @@
                 </div>
               </div>
           <h2>Generalization ability</h2>
-              <p> Same set of non-speech data is used to test the generalization ability of DENT and SimuGAN. The non-speech data includes: 1.ambient noise, 2.guitar, 3. piano 4. synth audio1 5. synth audio2  
+              <p> Same set of non-speech data is used to test the generalization ability of 2 trainable distortion models: DENT-DDSP and SimuGAN. The non-speech data includes: 1.ambient noise, 2.guitar, 3. piano 4. synth audio1 5. synth audio2. Simulation quality can be reflected from 1. noise spectal characteristics 2. audio spectral characteristics(distorted, high frequency being dampened)
                 <!-- <p style="color:red;">Please put on your earphones when linstening to these samples.</p> -->
                       <div class="big-screen">
                         <table class="table">
@@ -383,7 +427,7 @@
       
       
       
-      <div class="row" id="ref">
+      <!-- <div class="row" id="ref">
         <div class="col">
           <h2>References</h2>
           <div>
@@ -393,15 +437,9 @@
               speech recognition with 10 minutes unparalleled in-domain data,”
               in Proc. IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 2022
             </p>
-<!--            <p>-->
-<!--              <a name="2">[2]</a>-->
-<!--              Luo, Yi and Mesgarani, Nima. <a class="text-success"-->
-<!--                href="http://isle.illinois.edu/sst/pubs/2018/lim18icassp.pdf">“The rats collection: Supporting hlt researchwith degraded audio data.</a>,”-->
-<!--                in LREC.Citeseer, 2014.</em>-->
-<!--            </p>-->
           </div>
         </div>
-      </div>
+      </div> -->
       <hr>
       <!-- <div class="row" id="contact">
           <div class="col">
